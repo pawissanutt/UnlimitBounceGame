@@ -7,6 +7,8 @@ import com.mygdx.game.UnlimitBounceGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = UnlimitBounceGame.WIDTH;
+        config.height = UnlimitBounceGame.HEIGHT;
 		new LwjglApplication(new UnlimitBounceGame(), config);
 	}
 }
