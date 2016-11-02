@@ -31,7 +31,7 @@ public class World {
 	}
 	
 	private void makeBall(int x, int y, int rotation) {
-		balls.add(new Ball(x, y, rotation));
+		balls.add(new Ball(x, y, rotation, this));
 	}
 	
 	private void shootBall() {
@@ -55,6 +55,14 @@ public class World {
 		for (int i = 0; i < balls.size(); i++) {
 			Ball ball = balls.get(i);
 			ball.update(delta);
+		}
+	}
+	
+	public int degreeOfNormalLineThatBallhit(int x, int y) {
+		if (walls.isHitWall(x, y)) {
+			return walls.degreeOfNormalLine(x, y);
+		} else {
+			return -1;
 		}
 	}
 	
