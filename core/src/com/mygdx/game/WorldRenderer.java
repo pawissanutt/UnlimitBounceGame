@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class WorldRenderer {
 
 	private BallsRenderer ballsRenderer;
+	private WallsRenderer wallsRenderer;
 	private SpriteBatch batch;
 	private World world;
 	private TextureRegion gunTexture;
@@ -20,10 +21,12 @@ public class WorldRenderer {
 		gunTexture = new TextureRegion(new Texture("gun.png"));
 		gun = world.getGun();
 		ballsRenderer = new BallsRenderer(game, world);
+		wallsRenderer = new WallsRenderer(game, world);
 	}
 	
 	public void render(float delta) { 
 		ballsRenderer.render();
+		wallsRenderer.render();
         Vector2 pos = gun.getPosition();
         batch.begin();
         batch.draw(gunTexture, pos.x,pos.y, gun.originX, gun.originY, gun.width, gun.height, gun.Scale, gun.Scale, gun.getRotation());

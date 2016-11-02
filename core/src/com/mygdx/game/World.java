@@ -10,14 +10,20 @@ public class World {
 	
 	private Gun gun;
 	private ArrayList<Ball> balls ;
+	private Walls walls;
 	
 	public World () {
 		gun = new Gun();
 		balls = new ArrayList<Ball>();
+		walls = new Walls();
 	}
 	
 	public ArrayList<Ball> getBalls () {
 		return balls;
+	}
+	
+	public Walls getWalls() {
+		return this.walls;
 	}
 	
 	public Gun getGun() {
