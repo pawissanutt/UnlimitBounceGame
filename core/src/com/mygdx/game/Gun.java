@@ -26,12 +26,10 @@ public class Gun {
 	
 	public void update (float delta) {
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			rotation += 2;
+			rotation += 1;
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			rotation -= 2;
+			rotation -= 1;
 		}
-		
-		System.out.println(rotation);
 		
 		if (rotation > 85)
 			rotation = 85;

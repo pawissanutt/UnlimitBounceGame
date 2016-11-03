@@ -30,7 +30,7 @@ public class Ball {
 		double radian = Math.toRadians(rotation);
 		int newX = (int) (x - Speed*Math.sin(radian));
 		int newY = (int) (y + Speed*Math.cos(radian));
-		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY);
+		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY, (int) x, (int) y);
 		if (degreeOfNormalLine >= 0)
 		{
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;
@@ -41,6 +41,8 @@ public class Ball {
 	Vector2 getPosition() {
 		return new Vector2(x,y);	
 	}
+	
+
 	
 	public void update (float delta) {
 		double radian = Math.toRadians(rotation);

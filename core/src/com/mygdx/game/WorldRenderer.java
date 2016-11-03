@@ -10,6 +10,7 @@ public class WorldRenderer {
 
 	private BallsRenderer ballsRenderer;
 	private WallsRenderer wallsRenderer;
+	private BoxesRenderer boxesRenderer;
 	private SpriteBatch batch;
 	private World world;
 	private TextureRegion gunTexture;
@@ -22,11 +23,13 @@ public class WorldRenderer {
 		gun = world.getGun();
 		ballsRenderer = new BallsRenderer(game, world);
 		wallsRenderer = new WallsRenderer(game, world);
+		boxesRenderer = new BoxesRenderer(game, world);
 	}
 	
 	public void render(float delta) { 
 		ballsRenderer.render();
 		wallsRenderer.render();
+		boxesRenderer.render();
         Vector2 pos = gun.getPosition();
         batch.begin();
         batch.draw(gunTexture, pos.x,pos.y, gun.originX, gun.originY, gun.width, gun.height, gun.Scale, gun.Scale, gun.getRotation());

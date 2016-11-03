@@ -11,11 +11,13 @@ public class World {
 	private Gun gun;
 	private ArrayList<Ball> balls ;
 	private Walls walls;
+	private BoxesSystem boxesSystem;
 	
 	public World () {
 		gun = new Gun();
 		balls = new ArrayList<Ball>();
 		walls = new Walls();
+		boxesSystem = new BoxesSystem();
 	}
 	
 	public ArrayList<Ball> getBalls () {
@@ -28,6 +30,10 @@ public class World {
 	
 	public Gun getGun() {
 		return this.gun;
+	}
+	
+	public BoxesSystem getBoxSystem() {
+		return this.boxesSystem;
 	}
 	
 	private void makeBall(int x, int y, int rotation) {
@@ -57,11 +63,16 @@ public class World {
 		}
 	}
 	
-	public int degreeOfNormalLineThatBallhit(int x, int y) {
+	public int degreeOfNormalLineThatBallhit(int x, int y, int lastX, int lastY) {
 		if (walls.isHitWall(x, y)) {
 			return walls.degreeOfNormalLine(x, y);
 		} else {
-			return -1;
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY);
+			if (degree >= 0) {
+				return degree;
+			} else {
+				return -1;
+			}
 		}
 	}
 	
