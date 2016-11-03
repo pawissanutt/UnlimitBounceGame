@@ -4,8 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Ball {
 	
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 	private int rotation;
 	private World world;
 	
@@ -23,7 +23,6 @@ public class Ball {
 		this.y = y;
 		this.rotation = rotation;
 		this.world = world;
-		System.out.println(" new ball "+ this.rotation);
 	}
 	
 	private void changeRotation() {
@@ -32,7 +31,6 @@ public class Ball {
 		int newX = (int) (x - Speed*Math.sin(radian));
 		int newY = (int) (y + Speed*Math.cos(radian));
 		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY);
-		System.out.println(degreeOfNormalLine);
 		if (degreeOfNormalLine >= 0)
 		{
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;

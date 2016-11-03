@@ -52,6 +52,6 @@ public class WallsRenderer {
 		renderLeft();
 		renderRight();
 		renderTop();
-		renderBottom();
+//		renderBottom();
 	}
 }

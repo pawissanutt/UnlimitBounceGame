@@ -13,7 +13,7 @@ public class Walls {
 	}
 	
 	public boolean isHitWall(int x, int y) {
-		if (x <= 40 || x >= width - 40 || y <= 40 || y >= height - 40) {
+		if (x <= 40 || x >= width - 40 || y >= height - 40) {
 			return true;
 		}
 		return false;
@@ -23,7 +23,8 @@ public class Walls {
 		if (x > 40 && x < width - 40) {
 			if (y >= height - 40) {
 				return 180;
-			} else {
+			} 
+			else {
 				return 0;
 			}
 		} else {

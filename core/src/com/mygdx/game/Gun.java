@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Gun {
 	private int x = 400;
-	private int y = 100;
+	private int y = 50;
 	private int rotation = 0;
 	
 	final int width = 30;
@@ -31,6 +31,12 @@ public class Gun {
 			rotation -= 2;
 		}
 		
+		System.out.println(rotation);
+		
+		if (rotation > 85)
+			rotation = 85;
+		if (rotation < -85)
+			rotation = -85;
 	}
 	
 	public Vector2 getShootPosition () {

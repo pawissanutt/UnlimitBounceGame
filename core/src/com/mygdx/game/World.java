@@ -38,7 +38,6 @@ public class World {
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
 			Vector2 pos = gun.getShootPosition();
 			makeBall((int)pos.x, (int)pos.y, gun.getRotation());
-			System.out.println(" new ball");
 		}
 	}
 	
