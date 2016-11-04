@@ -36,9 +36,19 @@ public class BoxesSystem {
 		return -1;
 	}
 	
+	public void clearZeroBox () {
+		for (int i = 0 ;i < boxes.size(); i++){
+			if (boxes.get(i).getDurability() <= 0) {
+				boxes.remove(i);
+				break;
+			}
+		}
+	}
+	
 	public int degreeOfNormalLine (int newX, int newY, int lastX, int lastY) {
 		int index = getIndex(newX, newY);
 		if (index >= 0) {
+			boxes.get(index).decreseDurability();
 			return boxes.get(index).degreeOfNormalLine(newX, newY, lastX, lastY);
 		}
 		else {
