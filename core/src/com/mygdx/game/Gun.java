@@ -60,6 +60,7 @@ public class Gun {
 	private void shootBall() {
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && ballsInQueue == 0) {
 			ballsInQueue = maxBalls;
+			//toggleStop();
 		}	
 		if (ballsInQueue > 0 && delay <= 0) {
 			world.shootBall();
@@ -67,7 +68,7 @@ public class Gun {
 			delay = 3;
 		}
 		delay --;
-			
+		
 	}
 
 	public Vector2 getShootPosition() {

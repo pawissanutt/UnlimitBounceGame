@@ -38,6 +38,5 @@ public class BoxesRenderer {
 			font.draw(batch, dura, (int) box.getPosition().x + 10, (int) box.getPosition().y + 25);
 			batch.end();
 		}
-		System.out.println(boxes.size());
 	}
 }

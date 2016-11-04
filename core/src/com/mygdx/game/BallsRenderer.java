@@ -22,7 +22,7 @@ public class BallsRenderer {
 		for (int i = 0; i < balls.size(); i++) {
 			Ball ball = balls.get(i);
 			batch.begin();
-			batch.draw(ballImg, ball.getPosition().x, ball.getPosition().y, ball.originX, ball.originY, ball.width, ball.height, ball.Scale, ball.Scale, 0);
+			batch.draw(ballImg, ball.getPosition().x - (ball.width/2), ball.getPosition().y - (ball.height/2), ball.originX, ball.originY, ball.width, ball.height, ball.Scale, ball.Scale, 0);
 			batch.end();
 		}
 	}
