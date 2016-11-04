@@ -11,21 +11,20 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class BoxesRenderer {
 
 	private SpriteBatch batch;
-	private BoxesSystem boxesSystem ;
-	private ArrayList<SquareBox> boxes ;
+	private BoxesSystem boxesSystem;
+	private ArrayList<SquareBox> boxes;
 	private Texture boxImg;
 	private BitmapFont font;
-	
-	public BoxesRenderer (UnlimitBounceGame game, World world) {
+
+	public BoxesRenderer(UnlimitBounceGame game, World world) {
 		this.batch = game.batch;
 		boxesSystem = world.getBoxSystem();
 		boxImg = new Texture("box.png");
 		boxes = boxesSystem.getBoxes();
 		font = new BitmapFont();
 	}
-	
-	
-	public void render () {
+
+	public void render() {
 		for (int i = 0; i < boxes.size(); i++) {
 			SquareBox box = boxes.get(i);
 			batch.begin();

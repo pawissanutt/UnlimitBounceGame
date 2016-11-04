@@ -24,13 +24,13 @@ public class Gun {
 
 	public Gun(World world) {
 		this.world = world;
-		maxBalls = 10;
+		maxBalls = 30;
 		ballsInQueue = 0;
 		isStop = false;
 	}
 
-	public void toggleStop() {
-		isStop = !isStop;
+	public void setStop(boolean stop) {
+		isStop = stop;
 	}
 
 	public Vector2 getPosition() {
@@ -53,14 +53,16 @@ public class Gun {
 				rotation = 85;
 			if (rotation < -85)
 				rotation = -85;
-			shootBall();
 		}
+			shootBall();
+		
 	}
 
 	private void shootBall() {
-		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && ballsInQueue == 0) {
+		
+		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && ballsInQueue == 0 && ! isStop) {
 			ballsInQueue = maxBalls;
-			//toggleStop();
+			setStop(true);
 		}	
 		if (ballsInQueue > 0 && delay <= 0) {
 			world.shootBall();

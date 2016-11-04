@@ -12,8 +12,10 @@ public class World {
 	private ArrayList<Ball> balls;
 	private Walls walls;
 	private BoxesSystem boxesSystem;
+	private boolean isShoot;
 
 	public World() {
+		isShoot = true;
 		gun = new Gun(this);
 		balls = new ArrayList<Ball>();
 		walls = new Walls();
@@ -43,6 +45,7 @@ public class World {
 	public void shootBall() {
 		Vector2 pos = gun.getShootPosition();
 		makeBall((int) pos.x, (int) pos.y, gun.getRotation());
+		isShoot = true;
 	}
 
 	private void removeOutBall() {
@@ -73,11 +76,21 @@ public class World {
 			}
 		}
 	}
+	
+	private void endTurn() {
+		if (balls.size() == 0 && isShoot == true) {
+			boxesSystem.dropBox();
+			boxesSystem.randomGenerateBoxes();
+			gun.setStop(false);
+			isShoot = false;
+		}
+	}
 
 	public void update(float delta) {
 		gun.update(delta);
 		removeOutBall();
 		updateBalls(delta);
+		endTurn();
 		boxesSystem.clearZeroBox();
 	}
 

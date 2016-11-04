@@ -8,17 +8,21 @@ public class SquareBox {
 	private int y;
 	private int durability;
 
-	private int width = 40;
-	private int height = 40;
+	public static final int width = 40;
+	public static final int height = 40;
 
 	public SquareBox(int x, int y, int durability) {
 		this.x = x;
 		this.y = y;
 		this.durability = durability;
 	}
-	
+
+	public void drop() {
+		y -= height;
+	}
+
 	Vector2 getPosition() {
-		return new Vector2(x,y);	
+		return new Vector2(x, y);
 	}
 
 	public boolean hasBoxAt(int x, int y) {
@@ -27,7 +31,7 @@ public class SquareBox {
 		}
 		return false;
 	}
-	
+
 	public void decreseDurability() {
 		durability--;
 	}
@@ -54,7 +58,7 @@ public class SquareBox {
 				return 90;
 			}
 		}
-		if (lastX >= this.x + width ) {
+		if (lastX >= this.x + width) {
 			if (lastY < this.y) {
 				if (newX - (this.x + width) < this.y - newY) {
 					return 270;
@@ -71,7 +75,7 @@ public class SquareBox {
 				return 270;
 			}
 		}
-		if (lastY <= this.y ) {
+		if (lastY <= this.y) {
 			if (lastX < this.x) {
 				if (this.y - newY < this.x - newX) {
 					return 180;
@@ -88,7 +92,7 @@ public class SquareBox {
 				return 180;
 			}
 		}
-		if (lastY >= this.y + height ) {
+		if (lastY >= this.y + height) {
 			if (lastX < this.x) {
 				if (newY - (this.y + height) < this.x - newX) {
 					return 0;
