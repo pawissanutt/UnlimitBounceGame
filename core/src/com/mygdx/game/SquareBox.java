@@ -32,8 +32,8 @@ public class SquareBox {
 		return false;
 	}
 
-	public void decreseDurability() {
-		durability--;
+	public void decreseDurability(int damage) {
+		durability -= damage;
 	}
 
 	public int getDurability() {

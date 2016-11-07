@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,6 +12,7 @@ public class WorldRenderer {
 	private BallsRenderer ballsRenderer;
 	private WallsRenderer wallsRenderer;
 	private BoxesRenderer boxesRenderer;
+	private LineRenderer lineRenderer;
 	private SpriteBatch batch;
 	private World world;
 	private TextureRegion gunTexture;
@@ -24,12 +26,20 @@ public class WorldRenderer {
 		ballsRenderer = new BallsRenderer(game, world);
 		wallsRenderer = new WallsRenderer(game, world);
 		boxesRenderer = new BoxesRenderer(game, world);
+		lineRenderer = new LineRenderer(game, world);
+	}
+	
+	private void shouldRenderLine() {
+		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
+			lineRenderer.render();
+		}
 	}
 	
 	public void render(float delta) { 
 		ballsRenderer.render();
 		wallsRenderer.render();
 		boxesRenderer.render();
+		shouldRenderLine();
         Vector2 pos = gun.getPosition();
         batch.begin();
         batch.draw(gunTexture, pos.x,pos.y, gun.originX, gun.originY, gun.width, gun.height, gun.Scale, gun.Scale, gun.getRotation());

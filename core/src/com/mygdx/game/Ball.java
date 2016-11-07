@@ -8,13 +8,15 @@ public class Ball {
 	private float y;
 	private int rotation;
 	private World world;
+	
+	public static final int damage = 1;
 
 	final int width = 15;
 	final int height = 15;
 	final int Scale = 1;
 	final int originX = 7;
 	final int originY = 7;
-	final int Speed = 15;
+	final int speed = 15;
 	final int gameWidth = UnlimitBounceGame.WIDTH;
 	final int gameHeight = UnlimitBounceGame.HEIGHT;
 
@@ -28,8 +30,8 @@ public class Ball {
 	private void changeRotation() {
 		rotation = rotation % 360;
 		double radian = Math.toRadians(rotation);
-		int newX = (int) (x - Speed * Math.sin(radian));
-		int newY = (int) (y + Speed * Math.cos(radian));
+		int newX = (int) (x - speed * Math.sin(radian));
+		int newY = (int) (y + speed * Math.cos(radian));
 		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY, (int) x, (int) y);
 		if (degreeOfNormalLine >= 0) {
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;
@@ -42,8 +44,8 @@ public class Ball {
 
 	public void update(float delta) {
 		double radian = Math.toRadians(rotation);
-		x -= Speed * Math.sin(radian);
-		y += Speed * Math.cos(radian);
+		x -= speed * Math.sin(radian);
+		y += speed * Math.cos(radian);
 		changeRotation();
 	}
 

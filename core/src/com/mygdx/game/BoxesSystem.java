@@ -49,10 +49,10 @@ public class BoxesSystem {
 		}
 	}
 
-	public int degreeOfNormalLine(int newX, int newY, int lastX, int lastY) {
+	public int degreeOfNormalLine(int newX, int newY, int lastX, int lastY,int damage) {
 		int index = getIndex(newX, newY);
 		if (index >= 0) {
-			boxes.get(index).decreseDurability();
+			boxes.get(index).decreseDurability(damage);
 			return boxes.get(index).degreeOfNormalLine(newX, newY, lastX, lastY);
 		} else {
 			return -1;

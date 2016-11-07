@@ -68,7 +68,7 @@ public class World {
 		if (walls.isHitWall(x, y)) {
 			return walls.degreeOfNormalLine(x, y);
 		} else {
-			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY);
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, Ball.damage);
 			if (degree >= 0) {
 				return degree;
 			} else {
@@ -77,6 +77,19 @@ public class World {
 		}
 	}
 
+	public int degreeOfNormalLineThatLinehit(int x, int y, int lastX, int lastY) {
+		if (walls.isHitWall(x, y)) {
+			return walls.degreeOfNormalLine(x, y);
+		} else {
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, 0);
+			if (degree >= 0) {
+				return degree;
+			} else {
+				return -1;
+			}
+		}
+	}
+	
 	private void endTurn() {
 		if (balls.size() == 0 && isShoot == true) {
 			boxesSystem.dropBox();
