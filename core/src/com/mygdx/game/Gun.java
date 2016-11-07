@@ -6,14 +6,13 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Gun {
 
-	private int x = 400;
+	private int x = 300;
 	private int y = 50;
 	private int rotation = 0;
 	private boolean isStop;
 	private int maxBalls;
 	private int ballsInQueue;
 	private int delay;
-
 	private World world;
 
 	final int width = 30;
@@ -24,7 +23,7 @@ public class Gun {
 
 	public Gun(World world) {
 		this.world = world;
-		maxBalls = 30;
+		maxBalls = 5;
 		ballsInQueue = 0;
 		isStop = false;
 	}
@@ -48,7 +47,6 @@ public class Gun {
 			} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
 				rotation -= 1;
 			}
-
 			if (rotation > 85)
 				rotation = 85;
 			if (rotation < -85)
@@ -62,6 +60,7 @@ public class Gun {
 		
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && ballsInQueue == 0 && ! isStop) {
 			ballsInQueue = maxBalls;
+			maxBalls += 1;
 			setStop(true);
 		}	
 		if (ballsInQueue > 0 && delay <= 0) {

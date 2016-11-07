@@ -17,33 +17,33 @@ public class WallsRenderer {
 	}
 	
 	private void renderLeft() {
-		for (int y = 0; y < walls.height; y += 40) {
+		for (int y = 0; y < walls.height; y += Walls.wallWidth) {
 			batch.begin();
-			batch.draw(wallImg, 0, y);
+			batch.draw(wallImg, 0, y, Walls.wallWidth, Walls.wallWidth);
 			batch.end();
 		}
 	}
 	
 	private void renderRight() {
-		for (int y = 0; y < walls.height; y += 40) {
+		for (int y = 0; y < walls.height; y += Walls.wallWidth) {
 			batch.begin();
-			batch.draw(wallImg, walls.width-40, y);
+			batch.draw(wallImg, walls.width-Walls.wallWidth, y, Walls.wallWidth, Walls.wallWidth);
 			batch.end();
 		}
 	}
 	
 	private void renderTop() {
-		for (int x = 0; x < walls.width; x += 40) {
+		for (int x = 0; x < walls.width; x += Walls.wallWidth) {
 			batch.begin();
-			batch.draw(wallImg, x, walls.height - 40);
+			batch.draw(wallImg, x, walls.height - Walls.wallWidth, Walls.wallWidth, Walls.wallWidth);
 			batch.end();
 		}
 	}
 	
 	private void renderBottom() {
-		for (int x = 0; x < walls.width; x += 40) {
+		for (int x = 0; x < walls.width; x += Walls.wallWidth) {
 			batch.begin();
-			batch.draw(wallImg, x, 0);
+			batch.draw(wallImg, x, 0, Walls.wallWidth, Walls.wallWidth);
 			batch.end();
 		}
 	}

@@ -28,21 +28,4 @@ public class GameScreen extends ScreenAdapter {
 		world.update(delta);
 		worldRenderer.render(delta);
 	}
-	
-	private void updatePacmanDirection() {
-    	Gun gun = world.getGun();
-//        if(Gdx.input.isKeyPressed(Keys.UP)) {
-//            
-//        }
-//        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-//            
-//        }
-        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-         
-        }
-        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-        
-        }
-    	
-    }
 }

@@ -76,7 +76,7 @@ public class World {
 			}
 		}
 	}
-	
+
 	private void endTurn() {
 		if (balls.size() == 0 && isShoot == true) {
 			boxesSystem.dropBox();
@@ -93,5 +93,4 @@ public class World {
 		endTurn();
 		boxesSystem.clearZeroBox();
 	}
-
 }

@@ -33,7 +33,7 @@ public class WorldRenderer {
         Vector2 pos = gun.getPosition();
         batch.begin();
         batch.draw(gunTexture, pos.x,pos.y, gun.originX, gun.originY, gun.width, gun.height, gun.Scale, gun.Scale, gun.getRotation());
-        //font.draw(batch, "" + world.getScore(), 700, 60);
+		// font.draw(batch, "" + world.getScore(), 700, 60);
         batch.end();
 	}
 }

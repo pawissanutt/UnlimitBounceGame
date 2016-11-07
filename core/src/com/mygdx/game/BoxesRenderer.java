@@ -28,13 +28,13 @@ public class BoxesRenderer {
 		for (int i = 0; i < boxes.size(); i++) {
 			SquareBox box = boxes.get(i);
 			batch.begin();
-			batch.draw(boxImg, box.getPosition().x, box.getPosition().y);
+			batch.draw(boxImg, box.getPosition().x, box.getPosition().y, box.width, box.height);
 			String dura = "";
 			if (box.getDurability() <= 9) {
 				dura += " ";
 			}
 			dura += box.getDurability();
-			font.draw(batch, dura, (int) box.getPosition().x + 10, (int) box.getPosition().y + 25);
+			font.draw(batch, dura, (int) box.getPosition().x + 17, (int) box.getPosition().y + 30);
 			batch.end();
 		}
 	}

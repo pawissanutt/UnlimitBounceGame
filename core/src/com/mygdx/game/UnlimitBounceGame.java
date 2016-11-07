@@ -5,22 +5,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class UnlimitBounceGame extends Game {
 	SpriteBatch batch;
-	public static final int HEIGHT = 800;
-    public static final int WIDTH = 800;
-	
+	public static final int HEIGHT = 900;
+	public static final int WIDTH = 600;
+
 	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
 		setScreen(new GameScreen(this));
 	}
 
 	@Override
-	public void render () {
+	public void render() {
 		super.render();
 	}
-	
+
 	@Override
-	public void dispose () {
+	public void dispose() {
 		batch.dispose();
 	}
 }

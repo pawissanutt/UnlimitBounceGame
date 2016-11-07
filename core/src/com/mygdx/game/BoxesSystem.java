@@ -10,8 +10,7 @@ public class BoxesSystem {
 
 	public BoxesSystem() {
 		boxes = new ArrayList<SquareBox>();
-		addBox(120, 400, 99);
-		generateBoxChance = 0.5;
+		generateBoxChance = 0.6;
 		maxDurabilityBox = 20;
 		randomGenerateBoxes();
 	}
@@ -67,14 +66,15 @@ public class BoxesSystem {
 	}
 
 	public void randomGenerateBoxes() {
-		int y = UnlimitBounceGame.WIDTH - 2 * SquareBox.height;
-		for (int x = 40; x < UnlimitBounceGame.WIDTH - SquareBox.width; x += SquareBox.width) {
+		int y = Walls.height - 2 * Walls.wallWidth;
+		for (int x = Walls.wallWidth; x < UnlimitBounceGame.WIDTH - SquareBox.width; x += SquareBox.width) {
 			double random = Math.random();
 			if (random <= generateBoxChance) {
 				random = Math.random();
-				addBox(x, y, (int) (random*maxDurabilityBox));
+				addBox(x, y, (int) (random * maxDurabilityBox));
 			}
 		}
+		maxDurabilityBox += 10;
 	}
 
 }

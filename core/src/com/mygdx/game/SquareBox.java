@@ -8,8 +8,8 @@ public class SquareBox {
 	private int y;
 	private int durability;
 
-	public static final int width = 40;
-	public static final int height = 40;
+	public static final int width = 60;
+	public static final int height = 60;
 
 	public SquareBox(int x, int y, int durability) {
 		this.x = x;

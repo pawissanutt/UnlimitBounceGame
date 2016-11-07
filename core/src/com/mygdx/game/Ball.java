@@ -33,7 +33,6 @@ public class Ball {
 		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY, (int) x, (int) y);
 		if (degreeOfNormalLine >= 0) {
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;
-
 		}
 	}
 
