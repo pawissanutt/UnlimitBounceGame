@@ -38,7 +38,7 @@ public class World {
 		return this.boxesSystem;
 	}
 
-	private void makeBall(int x, int y, int rotation) {
+	private void makeBall(int x, int y, float rotation) {
 		balls.add(new Ball(x, y, rotation, this));
 	}
 

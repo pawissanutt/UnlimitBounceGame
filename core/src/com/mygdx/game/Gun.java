@@ -8,7 +8,7 @@ public class Gun {
 
 	private int x = 300;
 	private int y = 50;
-	private int rotation = 0;
+	private float rotation = 0;
 	private boolean isStop;
 	private int maxBalls;
 	private int ballsInQueue;
@@ -36,16 +36,22 @@ public class Gun {
 		return new Vector2(x, y);
 	}
 
-	public int getRotation() {
+	public float getRotation() {
 		return rotation;
 	}
 
 	public void update(float delta) {
+		float rotateSpeed ;
+		if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
+			rotateSpeed = 0.05f;
+		} else {
+			rotateSpeed = 1f;
+		}
 		if (!isStop) {
 			if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-				rotation += 1;
+				rotation += rotateSpeed;
 			} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-				rotation -= 1;
+				rotation -= rotateSpeed;
 			}
 			if (rotation > 85)
 				rotation = 85;

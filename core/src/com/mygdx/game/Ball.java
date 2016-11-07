@@ -6,7 +6,7 @@ public class Ball {
 
 	private float x;
 	private float y;
-	private int rotation;
+	private float rotation;
 	private World world;
 	
 	public static final int damage = 1;
@@ -20,7 +20,7 @@ public class Ball {
 	final int gameWidth = UnlimitBounceGame.WIDTH;
 	final int gameHeight = UnlimitBounceGame.HEIGHT;
 
-	public Ball(int x, int y, int rotation, World world) {
+	public Ball(int x, int y, float rotation, World world) {
 		this.x = x;
 		this.y = y;
 		this.rotation = rotation;
