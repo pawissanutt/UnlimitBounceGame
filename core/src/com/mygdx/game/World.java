@@ -113,6 +113,14 @@ public class World {
 			gun.increaseMaxBalls();
 		}
 	}
+	
+	private void skip (float delta) {
+		if (Gdx.input.isKeyJustPressed(Keys.Z) && inBounceInterval()) {
+			while (inBounceInterval()) {
+				update(delta);
+			}
+		}
+	}
 
 	public void update(float delta) {
 		gun.update(delta);
@@ -120,5 +128,6 @@ public class World {
 		updateBalls(delta);
 		endTurn();
 		boxesSystem.clearZeroBox();
+		skip(delta);
 	}
 }

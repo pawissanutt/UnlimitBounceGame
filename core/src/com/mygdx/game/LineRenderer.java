@@ -15,7 +15,7 @@ public class LineRenderer {
 	
 	private static final int normalLength = 50;
 	private static final int cheatLength = 1000;
-	private static final int width = 10;
+	private static final int width = 6;
 	private static final int speed = 15;
 	
 	public  LineRenderer (UnlimitBounceGame game, World world) {

@@ -50,7 +50,7 @@ public class Gun {
 	public void update(float delta) {
 		float rotateSpeed ;
 		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
-			rotateSpeed = 0.05f;
+			rotateSpeed = 0.02f;
 		} else {
 			rotateSpeed = 1f;
 		}
