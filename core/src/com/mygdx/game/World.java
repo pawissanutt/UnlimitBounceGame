@@ -13,9 +13,11 @@ public class World {
 	private Walls walls;
 	private BoxesSystem boxesSystem;
 	private boolean isShoot;
+	private int score;
 
 	public World() {
-		isShoot = true;
+		isShoot = false;
+		score = 0;
 		gun = new Gun(this);
 		balls = new ArrayList<Ball>();
 		walls = new Walls();
@@ -36,6 +38,10 @@ public class World {
 
 	public BoxesSystem getBoxSystem() {
 		return this.boxesSystem;
+	}
+	
+	public int getScore () {
+		return score;
 	}
 
 	private void makeBall(int x, int y, float rotation) {
@@ -90,12 +96,21 @@ public class World {
 		}
 	}
 	
+	public boolean inBounceInterval() {
+		if (balls.size() >= 0 && isShoot == true) {
+			return true;
+		}
+		return false;
+	}
+	
 	private void endTurn() {
 		if (balls.size() == 0 && isShoot == true) {
 			boxesSystem.dropBox();
 			boxesSystem.randomGenerateBoxes();
 			gun.setStop(false);
 			isShoot = false;
+			score ++;
+			gun.increaseMaxBalls();
 		}
 	}
 

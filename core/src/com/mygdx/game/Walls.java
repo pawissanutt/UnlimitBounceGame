@@ -11,7 +11,7 @@ public class Walls {
 		width = UnlimitBounceGame.WIDTH;
 		width = width - (width % wallWidth);
 		height = UnlimitBounceGame.HEIGHT;
-		height = height - (height % wallWidth);	
+		height = height - (height % wallWidth) - wallWidth;	
 	}
 	
 	public boolean isHitWall(int x, int y) {

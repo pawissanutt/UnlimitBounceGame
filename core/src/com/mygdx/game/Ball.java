@@ -10,15 +10,14 @@ public class Ball {
 	private World world;
 	
 	public static final int damage = 1;
-
-	final int width = 15;
-	final int height = 15;
-	final int Scale = 1;
-	final int originX = 7;
-	final int originY = 7;
-	final int speed = 15;
-	final int gameWidth = UnlimitBounceGame.WIDTH;
-	final int gameHeight = UnlimitBounceGame.HEIGHT;
+	public static final int width = 15;
+	public static final int height = 15;
+	public static final int Scale = 1;
+	public static final int originX = 7;
+	public static final int originY = 7;
+	public static final int speed = 15;
+	public static final int gameWidth = UnlimitBounceGame.WIDTH;
+	public static final int gameHeight = UnlimitBounceGame.HEIGHT;
 
 	public Ball(int x, int y, float rotation, World world) {
 		this.x = x;

@@ -31,6 +31,13 @@ public class Gun {
 	public void setStop(boolean stop) {
 		isStop = stop;
 	}
+	
+	public int getMaxBalls () {
+		return maxBalls;
+	}
+	public void increaseMaxBalls () {
+		maxBalls++;
+	}
 
 	public Vector2 getPosition() {
 		return new Vector2(x, y);
@@ -42,7 +49,7 @@ public class Gun {
 
 	public void update(float delta) {
 		float rotateSpeed ;
-		if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
+		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			rotateSpeed = 0.05f;
 		} else {
 			rotateSpeed = 1f;
@@ -66,7 +73,6 @@ public class Gun {
 		
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && ballsInQueue == 0 && ! isStop) {
 			ballsInQueue = maxBalls;
-			maxBalls += 1;
 			setStop(true);
 		}	
 		if (ballsInQueue > 0 && delay <= 0) {
