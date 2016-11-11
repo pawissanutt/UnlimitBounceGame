@@ -55,7 +55,6 @@ public class SquareBox {
 			double slope = Math.tan(radian);
 			double yIntersect = slope * (this.x - x) + y;
 			if (yIntersect > this. y && yIntersect < this.y + height) {
-				System.out.println("left"+ direction);
 				return true;
 			}
 		}
@@ -70,7 +69,6 @@ public class SquareBox {
 			double slope = Math.tan(radian);
 			double yIntersect = slope * (this.x + width - x) + y;
 			if (yIntersect > this.y && yIntersect < this.y + height) {
-				System.out.println("right"+ direction);
 				return true;
 			}
 		}
@@ -85,7 +83,6 @@ public class SquareBox {
 			double slope = Math.tan(radian);
 			double xIntersect = (this.y + height - y) / slope + x;
 			if (xIntersect > this.x && xIntersect < this.x + width) {
-				System.out.println("top"+ direction);
 				return true;
 			}
 			if (direction == 270) {
@@ -104,7 +101,6 @@ public class SquareBox {
 			double slope = Math.tan(radian);
 			double xIntersect = (this.y - y) / slope + x;
 			if (xIntersect > x && xIntersect < x + width) {
-				System.out.println("bottom "+ direction);
 				return true;
 				
 			}
