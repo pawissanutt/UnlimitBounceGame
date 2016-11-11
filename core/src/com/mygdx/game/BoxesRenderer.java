@@ -29,12 +29,9 @@ public class BoxesRenderer {
 			SquareBox box = boxes.get(i);
 			batch.begin();
 			batch.draw(boxImg, box.getPosition().x, box.getPosition().y, box.width, box.height);
-			String dura = "";
-			if (box.getDurability() <= 9) {
-				dura += " ";
-			}
-			dura += box.getDurability();
-			font.draw(batch, dura, (int) box.getPosition().x + 20, (int) box.getPosition().y + 35);
+		    String numberAsString = String.valueOf(box.getDurability());
+		    String dura = "   ".substring(numberAsString.length()) + numberAsString;
+			font.draw(batch, dura, (int) box.getPosition().x + 17, (int) box.getPosition().y + 35);
 			batch.end();
 		}
 	}

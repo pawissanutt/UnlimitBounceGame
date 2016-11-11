@@ -70,24 +70,11 @@ public class World {
 		}
 	}
 	
-	public int degreeOfNormalLineThatBallhit(float x, float y, float lastX, float lastY, float direction) {
+	public int degreeOfNormalLineThatBallhit(float x, float y, float lastX, float lastY, float direction, int damage) {
 		if (walls.isHitWall((int)x,(int) y)) {
 			return walls.degreeOfNormalLine((int) x, (int) y);
 		} else {
-			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, direction, Ball.damage);
-			if (degree >= 0) {
-				return degree;
-			} else {
-				return -1;
-			}
-		}
-	}
-
-	public int degreeOfNormalLineThatLinehit(float x, float y, float lastX, float lastY, float direction) {
-		if (walls.isHitWall((int)x, (int)y)) {
-			return walls.degreeOfNormalLine((int)x, (int)y);
-		} else {
-			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, direction,0);
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, direction, damage);
 			if (degree >= 0) {
 				return degree;
 			} else {
@@ -114,7 +101,7 @@ public class World {
 		}
 	}
 	
-	private void skip (float delta) {
+	public void skip (float delta) {
 		if (Gdx.input.isKeyJustPressed(Keys.Z) && inBounceInterval()) {
 			while (inBounceInterval()) {
 				update(delta);
@@ -128,6 +115,5 @@ public class World {
 		updateBalls(delta);
 		endTurn();
 		boxesSystem.clearZeroBox();
-		skip(delta);
 	}
 }

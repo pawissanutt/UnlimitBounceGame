@@ -32,7 +32,8 @@ public class GameOverScreen {
 	public void render() {
 		batch.begin();
 		batch.draw(titleImg, 100, 600);
-		font.draw(batch, "Game Over", 250, 500);
+		font.getData().setScale(2);
+		font.draw(batch, "Game Over", 220, 500);
 		renderHighScore();
 		batch.end();
 	}
@@ -48,9 +49,9 @@ public class GameOverScreen {
 	}
 	
 	private void renderHighScore() {
-		font.draw(batch, "HighScore:", 250, 400);
+		font.draw(batch, "HighScore:", 220, 400);
 		for (int i = 0; i < highScore.size(); i++) {
-			font.draw(batch, (i+1)+") : "+highScore.get(i) , 240, 360 - i * 20);
+			font.draw(batch, (i+1)+") : "+highScore.get(i) , 200, 360 - i * 30);
 			if (i == 4) {
 				break;
 			}

@@ -53,7 +53,7 @@ public class LineRenderer {
 		double radian = Math.toRadians(rotation);
 		float newX = (float) (x - speed * Math.sin(radian));
 		float newY = (float) (y + speed * Math.cos(radian));
-		int degreeOfNormalLine = world.degreeOfNormalLineThatLinehit(newX, newY,  x,  y, rotation);
+		int degreeOfNormalLine = world.degreeOfNormalLineThatBallhit(newX, newY,  x,  y, rotation, 0);
 		if (degreeOfNormalLine >= 0) {
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;
 		}

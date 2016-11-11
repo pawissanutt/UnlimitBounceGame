@@ -55,6 +55,7 @@ public class GameScreen extends ScreenAdapter {
 			shouldChangeToPlayScreen();
 		} else if (status == ScreenStatus.play) {
 			world.update(delta);
+			world.skip(delta);
 			worldRenderer.render(delta);
 			shouldChangeToGameOverScreen();
 		} else if (status == ScreenStatus.end) {

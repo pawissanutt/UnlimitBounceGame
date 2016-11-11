@@ -7,6 +7,7 @@ public class BoxesSystem {
 	private double generateBoxChance;
 	private double maxDurabilityBox;
 	private ArrayList<SquareBox> boxes;
+	private int maxDurabilityGrow = 15;
 
 	public BoxesSystem() {
 		boxes = new ArrayList<SquareBox>();
@@ -71,10 +72,10 @@ public class BoxesSystem {
 			double random = Math.random();
 			if (random <= generateBoxChance) {
 				random = Math.random();
-				addBox(x, y, (int) (random * maxDurabilityBox));
+				addBox(x, y, (int) (random * maxDurabilityBox/2 + maxDurabilityBox/2));
 			}
 		}
-		maxDurabilityBox += 10;
+		maxDurabilityBox += maxDurabilityGrow;
 	}
 	
 	public boolean checkGameOver() {
