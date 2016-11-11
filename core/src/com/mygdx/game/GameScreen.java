@@ -7,14 +7,22 @@ import com.badlogic.gdx.graphics.GL20;
 
 public class GameScreen extends ScreenAdapter {
 
+	public enum ScreenStatus {
+		start, play, end
+	};
+
+	private ScreenStatus status;
 	private UnlimitBounceGame game;
 	private World world;
 	private WorldRenderer worldRenderer;
+	private StartScreen startScreen;
 
 	public GameScreen(UnlimitBounceGame game) {
 		this.game = game;
 		world = new World();
 		worldRenderer = new WorldRenderer(game, world);
+		startScreen = new StartScreen(game);
+		status = ScreenStatus.start;
 	}
 
 	@Override
@@ -23,9 +31,20 @@ public class GameScreen extends ScreenAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		update(delta);
 	}
+	
+	private void shouldChangeToPlayScreen() {
+		if (startScreen.toPlayScreen()) {
+			status = ScreenStatus.play;
+		}
+	}
 
 	private void update(float delta) {
-		world.update(delta);
-		worldRenderer.render(delta);
+		if (status == ScreenStatus.start) {
+			startScreen.render();
+			shouldChangeToPlayScreen();
+		} else if (status == ScreenStatus.play) {
+			world.update(delta);
+			worldRenderer.render(delta);
+		}
 	}
 }
