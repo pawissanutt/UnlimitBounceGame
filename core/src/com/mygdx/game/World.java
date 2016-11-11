@@ -69,12 +69,12 @@ public class World {
 			ball.update(delta);
 		}
 	}
-
-	public int degreeOfNormalLineThatBallhit(int x, int y, int lastX, int lastY) {
-		if (walls.isHitWall(x, y)) {
-			return walls.degreeOfNormalLine(x, y);
+	
+	public int degreeOfNormalLineThatBallhit(float x, float y, float lastX, float lastY, float direction) {
+		if (walls.isHitWall((int)x,(int) y)) {
+			return walls.degreeOfNormalLine((int) x, (int) y);
 		} else {
-			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, Ball.damage);
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, direction, Ball.damage);
 			if (degree >= 0) {
 				return degree;
 			} else {
@@ -83,11 +83,11 @@ public class World {
 		}
 	}
 
-	public int degreeOfNormalLineThatLinehit(int x, int y, int lastX, int lastY) {
-		if (walls.isHitWall(x, y)) {
-			return walls.degreeOfNormalLine(x, y);
+	public int degreeOfNormalLineThatLinehit(float x, float y, float lastX, float lastY, float direction) {
+		if (walls.isHitWall((int)x, (int)y)) {
+			return walls.degreeOfNormalLine((int)x, (int)y);
 		} else {
-			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, 0);
+			int degree = boxesSystem.degreeOfNormalLine(x, y, lastX, lastY, direction,0);
 			if (degree >= 0) {
 				return degree;
 			} else {

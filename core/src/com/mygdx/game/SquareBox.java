@@ -39,75 +39,95 @@ public class SquareBox {
 	public int getDurability() {
 		return durability;
 	}
+	
+	private static float degreeMod(float degree) {
+		if (degree < 0) {
+			return (degree+3600)%360;
+		}
+		return degree%360;
+	}
 
-	public int degreeOfNormalLine(int newX, int newY, int lastX, int lastY) {
-		if (lastX <= this.x) {
-			if (lastY < this.y) {
-				if (this.x - newX < this.y - newY) {
-					return 90;
-				} else {
-					return 180;
-				}
-			} else if (lastY > this.y + height) {
-				if (this.x - newX < newY - (this.y + height)) {
-					return 90;
-				} else {
-					return 0;
-				}
-			} else {
-				return 90;
+	private boolean checkHitLeftDirection(float x, float y, float direction) {
+		direction = degreeMod(direction);
+		if (direction > 180 && direction < 360 ) {
+			direction -= 90;
+			double radian = Math.toRadians(direction);
+			double slope = Math.tan(radian);
+			double yIntersect = slope * (this.x - x) + y;
+			if (yIntersect > this. y && yIntersect < this.y + height) {
+				System.out.println("left"+ direction);
+				return true;
 			}
 		}
-		if (lastX >= this.x + width) {
-			if (lastY < this.y) {
-				if (newX - (this.x + width) < this.y - newY) {
-					return 270;
-				} else {
-					return 180;
-				}
-			} else if (lastY > this.y + height) {
-				if (newX - (this.x + width) < newY - (this.y + height)) {
-					return 270;
-				} else {
-					return 0;
-				}
-			} else {
-				return 270;
+		return false;
+	}
+
+	private boolean checkHitRightDirection(float x, float y, float direction) {
+		direction = degreeMod(direction);
+		if (direction > 0 && direction < 180) {
+			direction -= 90;
+			double radian = Math.toRadians(direction);
+			double slope = Math.tan(radian);
+			double yIntersect = slope * (this.x + width - x) + y;
+			if (yIntersect > this.y && yIntersect < this.y + height) {
+				System.out.println("right"+ direction);
+				return true;
 			}
 		}
-		if (lastY <= this.y) {
-			if (lastX < this.x) {
-				if (this.y - newY < this.x - newX) {
-					return 180;
-				} else {
-					return 90;
-				}
-			} else if (lastX > this.x + width) {
-				if (this.y - newY < newX - (this.x + width)) {
-					return 180;
-				} else {
-					return 270;
-				}
-			} else {
-				return 180;
+		return false;
+	}
+
+	private boolean checkHitTopDirection(float x, float y, float direction) {
+		direction = degreeMod(direction);
+		if (direction > 90 && direction < 270) {
+			direction -= 90;
+			double radian = Math.toRadians(direction);
+			double slope = Math.tan(radian);
+			double xIntersect = (this.y + height - y) / slope + x;
+			if (xIntersect > this.x && xIntersect < this.x + width) {
+				System.out.println("top"+ direction);
+				return true;
+			}
+			if (direction == 270) {
+				System.out.println("top"+ direction);
+				return true;
 			}
 		}
-		if (lastY >= this.y + height) {
-			if (lastX < this.x) {
-				if (newY - (this.y + height) < this.x - newX) {
-					return 0;
-				} else {
-					return 90;
-				}
-			} else if (lastX > this.x + width) {
-				if (newY - (this.y + height) < newX - (this.x + width)) {
-					return 0;
-				} else {
-					return 270;
-				}
-			} else {
-				return 0;
+		return false;
+	}
+
+	private boolean checkHitBottomDirection(float x, float y, float direction) {
+		direction = degreeMod(direction);
+		if (direction < 90 || direction > 270) {
+			direction -= 90;
+			double radian = Math.toRadians(direction);
+			double slope = Math.tan(radian);
+			double xIntersect = (this.y - y) / slope + x;
+			if (xIntersect > x && xIntersect < x + width) {
+				System.out.println("bottom "+ direction);
+				return true;
+				
 			}
+			if (direction == 90) {
+				System.out.println("bottom"+ direction);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int degreeOfNormalLine (float x, float y, float direction) {
+		if (checkHitLeftDirection(x, y, direction)) {
+			return 90;
+		}
+		if (checkHitRightDirection(x, y, direction)) {
+			return 270;
+		}
+		if (checkHitTopDirection(x, y, direction)) {
+			return 0;
+		}
+		if (checkHitBottomDirection(x, y, direction)) {
+			return 180;
 		}
 		return -1;
 	}

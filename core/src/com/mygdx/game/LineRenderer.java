@@ -51,9 +51,9 @@ public class LineRenderer {
 	private void changeRotation() {
 		rotation = rotation % 360;
 		double radian = Math.toRadians(rotation);
-		int newX = (int) (x - speed * Math.sin(radian));
-		int newY = (int) (y + speed * Math.cos(radian));
-		int degreeOfNormalLine = world.degreeOfNormalLineThatLinehit(newX, newY, (int) x, (int) y);
+		float newX = (float) (x - speed * Math.sin(radian));
+		float newY = (float) (y + speed * Math.cos(radian));
+		int degreeOfNormalLine = world.degreeOfNormalLineThatLinehit(newX, newY,  x,  y, rotation);
 		if (degreeOfNormalLine >= 0) {
 			rotation = 2 * degreeOfNormalLine + 180 - rotation;
 		}

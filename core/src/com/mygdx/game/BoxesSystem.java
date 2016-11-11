@@ -48,12 +48,12 @@ public class BoxesSystem {
 			}
 		}
 	}
-
-	public int degreeOfNormalLine(int newX, int newY, int lastX, int lastY,int damage) {
-		int index = getIndex(newX, newY);
+	
+	public int degreeOfNormalLine(float newX, float newY, float lastX, float lastY, float direction,int damage) {
+		int index = getIndex((int) newX, (int) newY);
 		if (index >= 0) {
 			boxes.get(index).decreseDurability(damage);
-			return boxes.get(index).degreeOfNormalLine(newX, newY, lastX, lastY);
+			return boxes.get(index).degreeOfNormalLine(lastX, lastY, direction);
 		} else {
 			return -1;
 		}
