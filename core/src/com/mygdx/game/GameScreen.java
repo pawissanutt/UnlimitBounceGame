@@ -45,6 +45,7 @@ public class GameScreen extends ScreenAdapter {
 	private void shouldChangeToGameOverScreen() {
 		if (world.getBoxSystem().checkGameOver()){
 			status = ScreenStatus.end;
+			gameOverScreen.addHighScore(world.getScore());
 		}
 	}
 
