@@ -34,7 +34,7 @@ public class BoxesRenderer {
 				dura += " ";
 			}
 			dura += box.getDurability();
-			font.draw(batch, dura, (int) box.getPosition().x + 17, (int) box.getPosition().y + 30);
+			font.draw(batch, dura, (int) box.getPosition().x + 20, (int) box.getPosition().y + 35);
 			batch.end();
 		}
 	}

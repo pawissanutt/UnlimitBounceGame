@@ -16,12 +16,14 @@ public class GameScreen extends ScreenAdapter {
 	private World world;
 	private WorldRenderer worldRenderer;
 	private StartScreen startScreen;
+	private GameOverScreen gameOverScreen;
 
 	public GameScreen(UnlimitBounceGame game) {
 		this.game = game;
 		world = new World();
 		worldRenderer = new WorldRenderer(game, world);
 		startScreen = new StartScreen(game);
+		gameOverScreen = new GameOverScreen(game);
 		status = ScreenStatus.start;
 	}
 
@@ -33,8 +35,16 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	private void shouldChangeToPlayScreen() {
-		if (startScreen.toPlayScreen()) {
+		if (Gdx.input.isKeyPressed(Keys.ENTER)) {
 			status = ScreenStatus.play;
+			world = new World();
+			worldRenderer = new WorldRenderer(game, world);
+		}
+	}
+	
+	private void shouldChangeToGameOverScreen() {
+		if (world.getBoxSystem().checkGameOver()){
+			status = ScreenStatus.end;
 		}
 	}
 
@@ -45,6 +55,10 @@ public class GameScreen extends ScreenAdapter {
 		} else if (status == ScreenStatus.play) {
 			world.update(delta);
 			worldRenderer.render(delta);
+			shouldChangeToGameOverScreen();
+		} else if (status == ScreenStatus.end) {
+			gameOverScreen.render();
+			shouldChangeToPlayScreen();
 		}
 	}
 }

@@ -76,5 +76,15 @@ public class BoxesSystem {
 		}
 		maxDurabilityBox += 10;
 	}
+	
+	public boolean checkGameOver() {
+		for (int i = 0; i < boxes.size(); i++) {
+			int y = (int) boxes.get(i).getPosition().y;
+			if (y < SquareBox.width*2) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
