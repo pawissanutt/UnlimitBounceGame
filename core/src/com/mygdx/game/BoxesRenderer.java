@@ -19,7 +19,7 @@ public class BoxesRenderer {
 	public BoxesRenderer(UnlimitBounceGame game, World world) {
 		this.batch = game.batch;
 		boxesSystem = world.getBoxSystem();
-		boxImg = new Texture("box.png");
+		boxImg = new Texture("Box.png");
 		boxes = boxesSystem.getBoxes();
 		font = new BitmapFont();
 	}
