@@ -28,6 +28,8 @@ public class StartScreen {
 	public void render() {
 		batch.begin();
 		batch.draw(titleImg, 100, 600);
+		font.getData().setScale(2);
+		font.draw(batch, "press \"Enter\" to start", 175, 400);
 		batch.end();
 	}
 	
