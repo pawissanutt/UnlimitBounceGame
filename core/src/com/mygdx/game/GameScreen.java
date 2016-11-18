@@ -17,6 +17,7 @@ public class GameScreen extends ScreenAdapter {
 	private WorldRenderer worldRenderer;
 	private StartScreen startScreen;
 	private GameOverScreen gameOverScreen;
+	private SoundTrack sound;
 
 	public GameScreen(UnlimitBounceGame game) {
 		this.game = game;
@@ -25,6 +26,7 @@ public class GameScreen extends ScreenAdapter {
 		startScreen = new StartScreen(game);
 		gameOverScreen = new GameOverScreen(game);
 		status = ScreenStatus.start;
+		sound = new SoundTrack();
 	}
 
 	@Override
