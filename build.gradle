@@ -2,22 +2,25 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         jcenter()
+        google()
     }
     dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.9'
+
+
     }
 }
 
 allprojects {
-    apply plugin: "eclipse"
-    apply plugin: "idea"
 
     version = '1.0'
     ext {
         appName = "UnlimitBounce"
-        gdxVersion = '1.9.4'
-        roboVMVersion = '2.2.0'
+        gdxVersion = '1.9.10'
+        roboVMVersion = '2.3.8'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
@@ -32,7 +35,7 @@ allprojects {
 }
 
 project(":desktop") {
-    apply plugin: "java"
+    apply plugin: "java-library"
 
 
     dependencies {
@@ -43,14 +46,10 @@ project(":desktop") {
 }
 
 project(":core") {
-    apply plugin: "java"
+    apply plugin: "java-library"
 
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
-}
-
-tasks.eclipse.doLast {
-    delete ".project"
 }

@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.game.renderer.WorldRenderer;
+import com.mygdx.game.world.World;
 
 public class GameScreen extends ScreenAdapter {
 
